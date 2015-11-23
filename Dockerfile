@@ -35,8 +35,6 @@ RUN a2enmod rewrite
 
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-#ENTRYPOINT ["/docker-entrypoint.sh"]
 EXPOSE 22 80 6082 8080
 CMD ["/usr/bin/supervisord"]
-#CMD ["varnishd", "-F", "-a", ":80", "-T", ":6082", "-f", "/etc/varnish/default.vcl", "-s", "malloc,1G"]
 
