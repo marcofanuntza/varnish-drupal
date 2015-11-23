@@ -37,5 +37,5 @@ RUN a2enmod rewrite
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 EXPOSE 22 80 6082 8080
-CMD ["/usr/bin/supervisord -c"]
+CMD ["/usr/bin/supervisord"]
 
