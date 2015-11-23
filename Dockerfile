@@ -30,11 +30,12 @@ RUN cd /var/www && curl -O http://ftp.drupal.org/files/projects/drupal-7.41.tar.
 ### Enable apache mods
 RUN mkdir -p /var/lock/apache2 /var/run/apache2 /var/run/sshd /var/log/supervisor
 RUN cd /etc/apache2/ && sed -i -e "s/*:80/*:8080/g" sites-enabled/000-default.conf && sed -i -e "s/80/8080/g" ports.conf
+RUN cd /etc/default/ && sed -i -e "s/6081/80/g" varnish 
 RUN a2enmod php5
 RUN a2enmod rewrite
 
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 EXPOSE 22 80 6082 8080
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord -c"]
 
