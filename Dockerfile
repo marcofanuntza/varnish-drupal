@@ -18,7 +18,8 @@ RUN cd /etc/default/ && sed -i -e "s/6081/80/g" varnish
 RUN a2enmod php5
 RUN a2enmod rewrite
 
-COPY start.sh /usr/
+COPY start.sh /
+ENTRYPOINT ["/start.sh"]
+
 EXPOSE 80 6082 8080
-#CMD ["/usr/bin/supervisord"] 
 
