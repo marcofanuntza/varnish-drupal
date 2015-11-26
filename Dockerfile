@@ -18,8 +18,11 @@ RUN cd /etc/default/ && sed -i -e "s/6081/80/g" varnish
 RUN a2enmod php5
 RUN a2enmod rewrite
 
+ENV VCL_CONFIG      /etc/varnish/default.vcl
+ENV CACHE_SIZE      64m
+ENV VARNISHD_PARAMS -p default_ttl=3600 -p default_grace=3600
 COPY start.sh /
-ENTRYPOINT ["/start.sh"]
+CMD /start.sh  
 
 EXPOSE 80 6082 8080
 
