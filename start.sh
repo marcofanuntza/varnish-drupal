@@ -1,2 +1,2 @@
-#/bin/bash
+#!/bin/bash
 service apache2 start && service varnish start
