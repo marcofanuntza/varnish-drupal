@@ -5,10 +5,10 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get -y upgrade 
 ##
 #Install Varnish Apache Php
-RUN apt-get -y install varnish apache2 php5 libapache2-mod-php5 php5-mysql php5-pgsql mysql-client postgresql-client curl vim drush --no-install-recommends && rm -r /var/lib/apt/lists/* 
+RUN apt-get -y install varnish apache2 php5 libapache2-mod-php5 php5-gd php5-mysql php5-pgsql mysql-client postgresql-client curl vim drush --no-install-recommends && rm -r /var/lib/apt/lists/* 
 ##
 #Drupal install
-RUN cd /var/www && curl -O http://ftp.drupal.org/files/projects/drupal-7.41.tar.gz && tar -xzvf drupal-7.41.tar.gz && rm drupal-7.41.tar.gz && mv drupal-7.41/* drupal-7.41/.htaccess ./ && mv drupal-7.41/.gitignore ./ && rmdir drupal-7.41 && chown -R www-data:www-data /var/www 
+RUN cd /var/www/html && rm inde* && curl -O http://ftp.drupal.org/files/projects/drupal-7.41.tar.gz && tar -xzvf drupal-7.41.tar.gz && rm drupal-7.41.tar.gz && mv drupal-7.41/* drupal-7.41/.htaccess ./ && mv drupal-7.41/.gitignore ./ && rmdir drupal-7.41 && chown -R www-data:www-data /var/www/html 
 ##
 #Post configurations
 ### Enable apache mods
@@ -25,4 +25,5 @@ COPY start.sh /
 CMD /start.sh  
 
 EXPOSE 80 6082 8080
+
 
