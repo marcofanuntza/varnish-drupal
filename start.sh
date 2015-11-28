@@ -1,7 +1,6 @@
 #!/bin/bash
-apache2ctl start
 set -e
-
+apache2ctl start
 exec bash -c \
   "exec varnishd -F -u varnish \
   -f $VCL_CONFIG \
