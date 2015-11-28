@@ -12,7 +12,7 @@ RUN cd /var/www && curl -O http://ftp.drupal.org/files/projects/drupal-7.41.tar.
 ##
 #Post configurations
 ### Enable apache mods
-RUN mkdir -p /var/lock/apache2 /var/run/apache2 /var/run/sshd /var/log/supervisor
+RUN mkdir -p /var/lock/apache2 /var/run/apache2 
 RUN cd /etc/apache2/ && sed -i -e "s/*:80/*:8080/g" sites-enabled/000-default.conf && sed -i -e "s/80/8080/g" ports.conf
 RUN cd /etc/default/ && sed -i -e "s/6081/80/g" varnish 
 RUN a2enmod php5
